@@ -9,10 +9,12 @@ KeycloakConnectModule.register({
   authServerUrl: 'http://localhost:8080', // might be http://localhost:8080/auth for older keycloak versions
   realm: 'master',
   clientId: 'my-nestjs-app',
-  secret: 'secret',   
+    secret: 'secret',   
   policyEnforcement: PolicyEnforcementMode.PERMISSIVE, // optional
   tokenValidation: TokenValidation.ONLINE, // optional
 })
+
+
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
