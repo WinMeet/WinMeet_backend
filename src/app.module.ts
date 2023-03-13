@@ -5,10 +5,11 @@ import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { BookmarkModule } from './bookmark/bookmark.module';
 import { PrismaModule } from './prisma/prisma.module';
-
+import { KeyCloakModule } from './keycloak/keycloak.service';
 @Module({
-  imports: [AuthModule, UserModule, BookmarkModule, PrismaModule],
+  imports: [AuthModule, UserModule, BookmarkModule, PrismaModule, KeyCloakModule],
   controllers: [AppController],
   providers: [AppService],
 })
+
 export class AppModule {}
