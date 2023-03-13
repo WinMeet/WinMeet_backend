@@ -1,20 +1,25 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { KeycloakConnectModule } from 'nest-keycloak-connect';
-import { PolicyEnforcementMode } from 'nest-keycloak-connect/constants';
-import { TokenValidation } from 'nest-keycloak-connect/constants';
 
-KeycloakConnectModule.register({
-  authServerUrl: 'http://localhost:8080', // might be http://localhost:8080/auth for older keycloak versions
-  realm: 'master',
-  clientId: 'my-nestjs-app',
-    secret: 'secret',   
-  policyEnforcement: PolicyEnforcementMode.PERMISSIVE, // optional
-  tokenValidation: TokenValidation.ONLINE, // optional
+
+import KcAdminClient from '@keycloak/keycloak-admin-client';
+
+const adminClient = new KcAdminClient({
+  baseUrl: 'http://localhost:8080/auth',
+  realmName: 'test'
 })
 
-
+let execute = async function () {
+  await adminClient.auth({
+    username: 'emre',
+    password: 'emre',
+    grantType: 'password',
+    clientId: 'nodejs-admin-client'
+  })
+  const users = await adminClient.users.find();
+  console.log(users)
+}
 //test
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

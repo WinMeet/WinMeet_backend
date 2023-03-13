@@ -20,6 +20,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@keycloak/keycloak-admin-client": "^21.0.1",
+    "@ndeitch/nestjs-keycloak": "^1.2.3",
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
@@ -29,6 +31,7 @@
     "bson": "^5.0.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
+    "keycloak-admin": "^1.14.22",
     "keycloak-js": "^21.0.1",
     "nest": "^0.1.6",
     "nest-keycloak-connect": "^1.9.1",
